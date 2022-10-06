@@ -11,7 +11,20 @@
   </head>
 
   <body>
-    <%= @match.actions.length %> actions
-    <%= yield %>
+    <% action = @match.actions.first %>
+    <%= action.starting_yards.from_left %>
+
+    <% progress = @match.actions_with_state.first[:state].progress %>
+    <%= progress.class.name %>
+    
+    <% phase = action.phases.first %>
+    <%= phase.type %>
+    <%= phase.yards_diff.number %>
+    <div class="progress">
+      <div class="progress-right"> </div>
+    </div>
+    <div class="pitch">
+      <div class="marker"> </div>
+    </div>
   </body>
 </html>

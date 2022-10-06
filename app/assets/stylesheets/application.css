@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+.progress {
+  width: 950px;
+  height: 100px;
+  background-color: #4CAC50;
+  margin: 20px 0 20px 0;
+}
+
+.progress-right {
+  width: 0;
+  height: 0;
+  border-top: 40px solid transparent;
+  border-left: 100px solid white;
+  border-bottom: 40px solid transparent;
+  position: relative;
+  left: 430px;
+  top: 10px;
+}
+
+.pitch {
+  position: relative;
+  width: 950px;
+  height: 500px;
+  background-image: url(/img/field.png);
+  background-size: cover;
+}
+
+.marker {
+  position: absolute;
+  top: 10px;
+  left: 350px;
+
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 40px solid #FFA400;
+}
