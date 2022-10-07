@@ -12,19 +12,32 @@
 
   <body>
     <% action = @match.actions.first %>
-    <%= action.starting_yards.from_left %>
-
-    <% progress = @match.actions_with_state.first[:state].progress %>
-    <%= progress.class.name %>
-    
+    <% setup = @match.actions_with_setup.first[:setup] %>
+    <% progress = setup.first_down_marker.starting_progress %>
     <% phase = action.phases.first %>
+    <% current_yards = action.starting_yards.from_left %>
+
+    <% progress_class_name = (progress.class.name == "ProgressCountup") ? "progress-right" : "progress-left" %>
+
     <%= phase.type %>
-    <%= phase.yards_diff.number %>
-    <div class="progress">
-      <div class="progress-right"> </div>
+    <div class="progress-box">
+      <div class="progress <%= progress_class_name %>"> </div>
     </div>
+    <%= phase.yards_diff.number  %>
+    <div class="progress-arrow"></div>
     <div class="pitch">
-      <div class="marker"> </div>
+      <div class="marker-start marker-yard-<%= current_yards %>">
+        <div class="marker-start-caption">
+          <%= current_yards %>
+        </div>
+      </div>
+      <% if setup.first_down_marker.target %>
+        <div class="marker-first-down"> 
+          <div class="marker-start-caption">
+            <%= setup.first_down_marker.target %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </body>
 </html>

@@ -1,0 +1,5 @@
+@for $i from 0 through 100 {
+  .marker-yard-#{$i} {
+    left: #{80 + ($i * 8) - $i/3 + $i/20 }px !important
+  }
+}
